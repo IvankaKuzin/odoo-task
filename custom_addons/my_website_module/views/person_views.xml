@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_person_tree" model="ir.ui.view">
+        <field name="name">my_website.person.tree</field>
+        <field name="model">my_website.person</field>
+        <field name="arch" type="xml">
+            <tree string="Persons">
+                <field name="full_name"/>
+                <field name="sex"/>
+                <field name="age"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_person_form" model="ir.ui.view">
+        <field name="name">my_website.person.form</field>
+        <field name="model">my_website.person</field>
+        <field name="arch" type="xml">
+            <form string="Person">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="full_name" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="birthday"/>
+                            <field name="age" readonly="1"/>
+                            <field name="sex"/>
+                            <field name="company_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_persons" model="ir.actions.act_window">
+        <field name="name">Persons</field>
+        <field name="res_model">my_website.person</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first person!
+            </p>
+        </field>
+    </record>
+</odoo>
