@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="persons_page_template" name="Persons Page">
+        <t t-call="website.layout">
+            <div class="container mt-4">
+                <h1 class="mb-4">Persons List</h1>
+
+                <div class="row">
+                    <t t-foreach="persons" t-as="person">
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title" t-field="person.full_name"/>
+                                    <p class="card-text" t-if="person.sex">
+                                        <strong>Sex:</strong> <span t-field="person.sex"/>
+                                    </p>
+                                    <p class="card-text" t-if="person.age">
+                                        <strong>Age:</strong> <span t-field="person.age"/>
+                                    </p>
+                                    <p class="card-text" t-if="person.company_id">
+                                        <strong>Company:</strong> <span t-field="person.company_id.name"/>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+
+                <div t-if="not persons" class="alert alert-info">
+                    <p class="mb-0">No persons found in the system.</p>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
