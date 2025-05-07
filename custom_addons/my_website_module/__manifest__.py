@@ -9,6 +9,7 @@
     "author": "Your Name",
     "depends": ["website"],
     "data": [
+        "security/ir.model.access.csv",
         "views/person_views.xml",
         "views/menu_views.xml",
     ],
