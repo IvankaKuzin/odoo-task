@@ -12,6 +12,7 @@
         "security/ir.model.access.csv",
         "views/person_views.xml",
         "views/menu_views.xml",
+        "views/website_templates.xml",
     ],
     "installable": True,
     "application": False,
