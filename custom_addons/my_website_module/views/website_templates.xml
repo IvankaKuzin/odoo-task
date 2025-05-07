@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- Існуючий шаблон сторінки списку осіб -->
     <template id="persons_page_template" name="Persons Page">
         <t t-call="website.layout">
             <div class="container mt-4">
-                <h1 class="mb-4">Persons List</h1>
+                <div class="row mb-4">
+                    <div class="col">
+                        <h1>Persons List</h1>
+                    </div>
+                    <div class="col-auto">
+                        <a href="/persons/add" class="btn btn-primary">
+                            <i class="fa fa-plus"></i> Add New Person
+                        </a>
+                    </div>
+                </div>
 
                 <div class="row">
                     <t t-foreach="persons" t-as="person">
@@ -28,6 +38,94 @@
 
                 <div t-if="not persons" class="alert alert-info">
                     <p class="mb-0">No persons found in the system.</p>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="person_add_form_template" name="Add Person Form">
+        <t t-call="website.layout">
+            <div class="container mt-4">
+                <div class="row mb-4">
+                    <div class="col">
+                        <h1>Add New Person</h1>
+                    </div>
+                    <div class="col-auto">
+                        <a href="/persons" class="btn btn-secondary">
+                            <i class="fa fa-arrow-left"></i> Back to List
+                        </a>
+                    </div>
+                </div>
+
+                <div t-if="error" class="alert alert-danger">
+                    <p t-esc="error"/>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/persons/create" method="post">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="first_name" class="form-label">First Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="first_name" name="first_name"
+                                               required="required" t-att-value="post.get('first_name') if post else ''"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="last_name" class="form-label">Last Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="last_name" name="last_name"
+                                               required="required" t-att-value="post.get('last_name') if post else ''"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="birthday" class="form-label">Birthday</label>
+                                        <input type="date" class="form-control" id="birthday" name="birthday"
+                                               t-att-value="post.get('birthday') if post else ''"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="sex" class="form-label">Sex</label>
+                                        <select class="form-select" id="sex" name="sex">
+                                            <option value="">-- Select Sex --</option>
+                                            <option value="male" t-att-selected="post.get('sex') == 'male' if post else False">Male</option>
+                                            <option value="female" t-att-selected="post.get('sex') == 'female' if post else False">Female</option>
+                                            <option value="non-binary" t-att-selected="post.get('sex') == 'non-binary' if post else False">Non-Binary</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="company_id" class="form-label">Company <span class="text-danger">*</span></label>
+                                        <select class="form-select" id="company_id" name="company_id" required="required">
+                                            <option value="">-- Select Company --</option>
+                                            <t t-foreach="companies" t-as="company">
+                                                <option t-att-value="company.id" t-att-selected="str(company.id) == post.get('company_id') if post else False">
+                                                    <t t-esc="company.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a href="/persons" class="btn btn-secondary me-md-2">Cancel</a>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </t>

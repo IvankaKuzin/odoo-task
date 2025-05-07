@@ -13,3 +13,10 @@ class PersonsController(http.Controller):
         return request.render("my_website_module.persons_page_template", {
             "persons": persons
         })
+
+    @http.route("/persons/add", type="http", auth="public", website=True)
+    def person_form(self, **kw):
+        companies = request.env["res.company"].sudo().search([])
+        return request.render("my_website_module.person_add_form_template", {
+            "companies": companies
+        })
