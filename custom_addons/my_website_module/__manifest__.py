@@ -6,7 +6,7 @@
         Module for managing persons with their basic information.
     """,
     "category": "Website",
-    "author": "Your Name",
+    "author": "IvannaKuzin",
     "depends": ["website"],
     "data": [
         "security/ir.model.access.csv",
