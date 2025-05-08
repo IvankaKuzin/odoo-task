@@ -17,16 +17,3 @@ Key Features
 Dependencies
 ========
 This module depends on the Website module in Odoo.
-
-Data Files Included:
-========
-- **Security Settings**:
-    - `security/ir.model.access.csv` defines access controls for managing records.
-- **Views**:
-    - `views/person_views.xml` for managing persons in the backend.
-    - `views/menu_views.xml` for adding menu items for navigation.
-    - `views/website_templates.xml` for website-related UI templates.
-- **Technical Details**:
-    - `__init__.py` file indicates that the module contains both models and controllers.
-        - Models: Define the data structure and logic for persons.
-        - Controllers: Handle the website's routing and functionality.
