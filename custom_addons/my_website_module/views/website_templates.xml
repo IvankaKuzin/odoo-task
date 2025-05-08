@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Існуючий шаблон сторінки списку осіб -->
     <template id="persons_page_template" name="Persons Page">
         <t t-call="website.layout">
             <div class="container mt-4">
@@ -10,7 +9,7 @@
                     </div>
                     <div class="col-auto">
                         <a href="/persons/add" class="btn btn-primary">
-                            <i class="fa fa-plus"></i> Add New Person
+                            <i class="fa fa-plus">Add New Person</i>
                         </a>
                     </div>
                 </div>
@@ -52,7 +51,7 @@
                     </div>
                     <div class="col-auto">
                         <a href="/persons" class="btn btn-secondary">
-                            <i class="fa fa-arrow-left"></i> Back to List
+                            <i class="fa fa-arrow-left">Back to List</i>
                         </a>
                     </div>
                 </div>

@@ -1,6 +1,4 @@
-# noinspection PyUnresolvedReferences
 from odoo import http
-# noinspection PyUnresolvedReferences
 from odoo.http import request
 
 
