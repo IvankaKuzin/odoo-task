@@ -10,8 +10,8 @@ Key Features
 .. image:: model.png
 .. image:: views.png
 - **Feature 2**: Implemented a controller to handle the display of persons on the website.
-- **Feature 3**: Developed a template to create a new person.
 .. image:: persons_list.png
+- **Feature 3**: Developed a template to create a new person.
 .. image:: add_person.png
 
 Dependencies
